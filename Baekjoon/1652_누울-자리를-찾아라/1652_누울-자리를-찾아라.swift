@@ -1,0 +1,30 @@
+import Foundation
+
+let n = Int(readLine()!)!
+var horizen = Array(repeating: "", count: n)
+var vertical = Array(repeating: "", count: n)
+var answer = [0,0]
+
+for i in 0..<n {
+    let line = readLine()!.map{String($0)}
+    for k in 0..<n {
+        horizen[i] += line[k]
+        vertical[k] += line[k]
+    }
+}
+
+for i in 0..<n {
+    let h = horizen[i].split(separator: "X")
+    let v = vertical[i].split(separator: "X")
+    for space in h {
+      if space.contains("..") {
+            answer[0] += 1
+        }
+    }
+    for space in v {
+        if space.contains("..") {
+            answer[1]+=1
+        }
+    }
+}
+print(answer[0],answer[1])
